@@ -1,0 +1,65 @@
+@mixin height-width {
+  height: 18.75rem;
+  width: 18.75rem;
+}
+
+@mixin grid-tile-hover {
+  background-color: rgb(78, 190, 194);
+  transition: 0.5s;
+}
+
+.tictactoe {
+  background-image: url(../assets/Images/x-o-background-seamless-pattern-68583854.jpg);
+  margin: 0;
+}
+
+.header {
+  background-color: #ffffff;
+  width: 300px;
+  margin: 0 auto -4.18rem auto;
+}
+.tic-tac-toe-wrapper {
+  margin: 6.25rem auto 6.25rem auto;
+
+  @include height-width();
+  mat-grid-tile {
+    font-size: 3.375rem;
+    border: 0.0625rem solid black;
+    background-color: rgb(147, 233, 229);
+    cursor: pointer;
+    .mat-figure:hover {
+      @include grid-tile-hover();
+    }
+  }
+}
+
+.turn {
+  background-color: #00f094;
+  width: 18.75rem;
+  height: 2.5rem;
+  padding-top: 1.05rem;
+  border: 0.0625rem solid black;
+  border-bottom: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.selected-box {
+  .mat-figure {
+    background-color: rgb(228, 177, 135);
+  }
+}
+
+.play-again-button {
+  width: 18.75rem;
+  height: 5rem;
+  margin: auto;
+}
+
+.mat-raised-button.mat-accent {
+  margin: auto;
+  width: 18.75rem;
+  background-color: #00f094;
+  font-size: large;
+  color: black;
+}
