@@ -8,9 +8,18 @@
       <span>{{turn}}</span>
     </div>
     <mat-grid-list cols="3" rowHeight="1:1" gutterSize="2px">
-      <mat-grid-tile class="grid-tile" *ngFor="let tile of Tiles; let i = index" [style.background]="tile.color"
+      <mat-grid-tile class="grid-tile" *ngFor="let tile of Tiles; let i = index" 
         (click)="changeText(i)">{{tile.text}}</mat-grid-tile>
     </mat-grid-list>
+    <div class="strike-through-0-4-8" *ngIf="diagonalWinner"></div>
+    <div class="strike-through-2-4-6" *ngIf="diagonalWinner1"></div>
+    <div class="strike-through-1-2-3" *ngIf="winner123"></div>
+    <div class="strike-through-4-5-6" *ngIf="winner456"></div>
+    <div class="strike-through-7-8-9" *ngIf="winner789"></div>
+    <div class="strike-through-1-4-7" *ngIf="winner147"></div>
+    <div class="strike-through-2-5-8" *ngIf="winner258"></div>
+    <div class="strike-through-3-6-9" *ngIf="winner369"></div>
+  
   </div>
 
   <div class="play-again-button">

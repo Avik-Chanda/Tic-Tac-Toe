@@ -18,7 +18,14 @@ export class AppComponent implements OnInit {
   x_or_o = 0;
   Tiles: Tile[] = [];
   turn = 'Play your game';
-  isWinnerDecided = false;
+  diagonalWinner = false;
+  diagonalWinner1 = false;
+  winner123 = false;
+  winner456 = false;
+  winner789 = false;
+  winner147 = false;
+  winner258= false;
+  winner369 = false;
 
   ngOnInit() {
     this.generateData();
@@ -41,14 +48,14 @@ export class AppComponent implements OnInit {
       this.Tiles[0].color = '#f23900';
       this.Tiles[1].color = '#f23900';
       this.Tiles[2].color = '#f23900';
-      this.isWinnerDecided = true
+      this.winner123 = true;
     }
     if (this.Tiles[3].text !== '' && this.Tiles[3].text === this.Tiles[4].text && this.Tiles[3].text === this.Tiles[5].text) {
       this.turn = 'Winner is' + " " + this.Tiles[3].text;
       this.Tiles[3].color = '#f23900';
       this.Tiles[4].color = '#f23900';
       this.Tiles[5].color = '#f23900';
-      this.isWinnerDecided = true;
+      this.winner456 = true;
     }
     if (this.Tiles[6].text !== '' && this.Tiles[6].text === this.Tiles[7].text && this.Tiles[7].text === this.Tiles[8].text) {
 
@@ -56,7 +63,7 @@ export class AppComponent implements OnInit {
       this.Tiles[6].color = '#f23900';
       this.Tiles[7].color = '#f23900';
       this.Tiles[8].color = '#f23900';
-      this.isWinnerDecided = true;
+      this.winner789 = true;
     }
     if (this.Tiles[0].text !== '' && this.Tiles[0].text === this.Tiles[3].text && this.Tiles[0].text === this.Tiles[6].text) {
 
@@ -64,7 +71,7 @@ export class AppComponent implements OnInit {
       this.Tiles[0].color = '#f23900';
       this.Tiles[3].color = '#f23900';
       this.Tiles[6].color = '#f23900';
-      this.isWinnerDecided = true;
+      this.winner147 = true;
     }
     if (this.Tiles[1].text !== '' && this.Tiles[1].text === this.Tiles[4].text && this.Tiles[4].text === this.Tiles[7].text) {
 
@@ -72,7 +79,7 @@ export class AppComponent implements OnInit {
       this.Tiles[4].color = '#f23900';
       this.Tiles[1].color = '#f23900';
       this.Tiles[7].color = '#f23900';
-      this.isWinnerDecided = true;
+      this.winner258 = true;
     }
     if (this.Tiles[2].text !== '' && this.Tiles[2].text === this.Tiles[5].text && this.Tiles[2].text === this.Tiles[8].text) {
 
@@ -80,7 +87,7 @@ export class AppComponent implements OnInit {
       this.Tiles[8].color = '#f23900';
       this.Tiles[5].color = '#f23900';
       this.Tiles[2].color = '#f23900';
-      this.isWinnerDecided = true
+      this.winner369 = true
     }
     if (this.Tiles[0].text !== '' && this.Tiles[0].text === this.Tiles[4].text && this.Tiles[0].text === this.Tiles[8].text) {
 
@@ -88,7 +95,7 @@ export class AppComponent implements OnInit {
       this.Tiles[0].color = '#f23900';
       this.Tiles[4].color = '#f23900';
       this.Tiles[8].color = '#f23900';
-      this.isWinnerDecided = true;
+      this.diagonalWinner = true;
     }
     if (this.Tiles[2].text !== '' && this.Tiles[2].text === this.Tiles[4].text && this.Tiles[2].text === this.Tiles[6].text) {
 
@@ -96,17 +103,21 @@ export class AppComponent implements OnInit {
       this.Tiles[6].color = '#f23900';
       this.Tiles[4].color = '#f23900';
       this.Tiles[2].color = '#f23900';
-      this.isWinnerDecided = true;
+      this.diagonalWinner1 = true;
     }
 
-    if (this.x_or_o === 9 && this.isWinnerDecided === false) {
+    if (this.x_or_o === 9) {
       this.turn = 'Its a draw... play again';
     }
 
   }
 
   changeText(index: number) {
-    if (this.Tiles[index].text === '' && this.x_or_o <= 9 && this.isWinnerDecided === false) {
+    if (this.Tiles[index].text === '' && this.x_or_o <= 9 && this.winner123 === false && 
+    this.winner147===false && this.winner258 ===false 
+    &&this.winner369 ===false && this.winner456 ===false && this.winner789===false &&
+    this.diagonalWinner ==false && 
+    this.diagonalWinner1 == false) {
       if (this.x_or_o % 2 === 0) {
         this.x_or_o += 1;
         this.Tiles[index].text = 'X';
@@ -126,7 +137,14 @@ export class AppComponent implements OnInit {
   playAgain() {
     this.x_or_o = 0;
     this.turn = 'Play your game';
-    this.isWinnerDecided = false;
+    this.winner123 = false;
+  this.winner456 = false;
+  this.winner789 = false;
+  this.winner147 = false;
+  this.winner258= false;
+  this.winner369 = false;
+    this.diagonalWinner = false;
+    this.diagonalWinner1 = false;
     for (const i of this.Tiles) {
       i.text = '';
       i.isSelected = false;
