@@ -96,6 +96,7 @@ export class AppComponent implements OnInit {
       this.Tiles[4].color = '#f23900';
       this.Tiles[8].color = '#f23900';
       this.diagonalWinner = true;
+      
     }
     if (this.Tiles[2].text !== '' && this.Tiles[2].text === this.Tiles[4].text && this.Tiles[2].text === this.Tiles[6].text) {
 
